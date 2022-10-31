@@ -176,10 +176,6 @@ task uvma_rvfi_instr_mon_c::monitor_rvfi_instr();
             mon_trn.csrs[csr] = csr_trn;
          end
 
-         if (mon_trn.intr) begin
-            `uvm_fatal(log_tag, "INTR")
-         end
-
          // Determine if interrupt is nmi or interrupt
          mon_trn.insn_nmi        = 0;
          mon_trn.insn_interrupt  = 0;

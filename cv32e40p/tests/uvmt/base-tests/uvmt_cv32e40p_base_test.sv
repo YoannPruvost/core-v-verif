@@ -220,7 +220,7 @@ function void uvmt_cv32e40p_base_test_c::build_phase(uvm_phase phase);
 
    super.build_phase(phase);
 
-   rs.set_max_quit_count(.count(5), .overridable(1));
+   rs.set_max_quit_count(.count(10), .overridable(1));
 
    create_cfg       ();
    cfg_hrtbt_monitor();

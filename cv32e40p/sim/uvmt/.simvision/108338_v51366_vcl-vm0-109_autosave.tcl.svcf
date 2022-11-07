@@ -1,0 +1,154 @@
+
+#
+# Preferences
+#
+preferences set plugin-enable-svdatabrowser-new 1
+preferences set toolbar-Standard-WaveWindow {
+  usual
+  position -pos 1
+}
+preferences set plugin-enable-groupscope 0
+preferences set plugin-enable-interleaveandcompare 0
+preferences set plugin-enable-waveformfrequencyplot 0
+
+#
+# Databases
+#
+database require waves -search {
+	./xrun_results/default/interrupt_test/0/waves.shm/waves.trn
+	/home/v51366/mydata/GitHubRepos/MikeOpenHWGroup/core-v-verif/cv32e40p/dev_rvfi/cv32e40p/sim/uvmt/xrun_results/default/interrupt_test/0/waves.shm/waves.trn
+}
+
+#
+# Mnemonic Maps
+#
+mmap new -reuse -name {Boolean as Logic} -radix %b -contents {{%c=FALSE -edgepriority 1 -shape low}
+{%c=TRUE -edgepriority 1 -shape high}}
+mmap new -reuse -name {Example Map} -radix %x -contents {{%b=11???? -bgcolor orange -label REG:%x -linecolor yellow -shape bus}
+{%x=1F -bgcolor red -label ERROR -linecolor white -shape EVENT}
+{%x=2C -bgcolor red -label ERROR -linecolor white -shape EVENT}
+{%x=* -label %x -linecolor gray -shape bus}}
+
+#
+# Waveform windows
+#
+if {[catch {window new WaveWindow -name "Waveform 1" -geometry 1748x592+70+54}] != ""} {
+    window geometry "Waveform 1" 1748x592+70+54
+}
+window target "Waveform 1" on
+waveform using {Waveform 1}
+waveform sidebar select designbrowser
+waveform set \
+    -primarycursor TimeA \
+    -signalnames name \
+    -signalwidth 175 \
+    -units ns \
+    -valuewidth 75
+waveform baseline set -time 0
+
+set id [waveform add -signals  {
+	waves::uvmt_cv32e40p_tb.dut_wrap.cv32e40p_tb_wrapper_i.rvfi_instr_if_0_i.clk
+	} ]
+set id [waveform add -signals  {
+	{waves::uvmt_cv32e40p_tb.dut_wrap.cv32e40p_tb_wrapper_i.rvfi_instr_if_0_i.cycle_cnt[31:0]}
+	} ]
+set id [waveform add -signals  {
+	waves::uvmt_cv32e40p_tb.dut_wrap.cv32e40p_tb_wrapper_i.rvfi_instr_if_0_i.reset_n
+	} ]
+set id [waveform add -signals  {
+	{waves::uvmt_cv32e40p_tb.dut_wrap.cv32e40p_tb_wrapper_i.rvfi_instr_if_0_i.rvfi_dbg[2:0]}
+	} ]
+set id [waveform add -signals  {
+	waves::uvmt_cv32e40p_tb.dut_wrap.cv32e40p_tb_wrapper_i.rvfi_instr_if_0_i.rvfi_dbg_mode
+	} ]
+set id [waveform add -signals  {
+	waves::uvmt_cv32e40p_tb.dut_wrap.cv32e40p_tb_wrapper_i.rvfi_instr_if_0_i.rvfi_halt
+	} ]
+set id [waveform add -signals  {
+	{waves::uvmt_cv32e40p_tb.dut_wrap.cv32e40p_tb_wrapper_i.rvfi_instr_if_0_i.rvfi_insn[31:0]}
+	} ]
+set id [waveform add -signals  {
+	waves::uvmt_cv32e40p_tb.dut_wrap.cv32e40p_tb_wrapper_i.rvfi_instr_if_0_i.rvfi_intr
+	} ]
+set id [waveform add -signals  {
+	{waves::uvmt_cv32e40p_tb.dut_wrap.cv32e40p_tb_wrapper_i.rvfi_instr_if_0_i.rvfi_ixl[1:0]}
+	} ]
+set id [waveform add -signals  {
+	{waves::uvmt_cv32e40p_tb.dut_wrap.cv32e40p_tb_wrapper_i.rvfi_instr_if_0_i.rvfi_mem_addr[31:0]}
+	} ]
+set id [waveform add -signals  {
+	{waves::uvmt_cv32e40p_tb.dut_wrap.cv32e40p_tb_wrapper_i.rvfi_instr_if_0_i.rvfi_mem_rdata[31:0]}
+	} ]
+set id [waveform add -signals  {
+	{waves::uvmt_cv32e40p_tb.dut_wrap.cv32e40p_tb_wrapper_i.rvfi_instr_if_0_i.rvfi_mem_rmask[3:0]}
+	} ]
+set id [waveform add -signals  {
+	{waves::uvmt_cv32e40p_tb.dut_wrap.cv32e40p_tb_wrapper_i.rvfi_instr_if_0_i.rvfi_mem_wdata[31:0]}
+	} ]
+set id [waveform add -signals  {
+	{waves::uvmt_cv32e40p_tb.dut_wrap.cv32e40p_tb_wrapper_i.rvfi_instr_if_0_i.rvfi_mem_wmask[3:0]}
+	} ]
+set id [waveform add -signals  {
+	{waves::uvmt_cv32e40p_tb.dut_wrap.cv32e40p_tb_wrapper_i.rvfi_instr_if_0_i.rvfi_mode[1:0]}
+	} ]
+set id [waveform add -signals  {
+	{waves::uvmt_cv32e40p_tb.dut_wrap.cv32e40p_tb_wrapper_i.rvfi_instr_if_0_i.rvfi_order[63:0]}
+	} ]
+set id [waveform add -signals  {
+	{waves::uvmt_cv32e40p_tb.dut_wrap.cv32e40p_tb_wrapper_i.rvfi_instr_if_0_i.rvfi_pc_rdata[31:0]}
+	} ]
+set id [waveform add -signals  {
+	{waves::uvmt_cv32e40p_tb.dut_wrap.cv32e40p_tb_wrapper_i.rvfi_instr_if_0_i.rvfi_pc_wdata[31:0]}
+	} ]
+set id [waveform add -signals  {
+	{waves::uvmt_cv32e40p_tb.dut_wrap.cv32e40p_tb_wrapper_i.rvfi_instr_if_0_i.rvfi_rd1_addr[4:0]}
+	} ]
+set id [waveform add -signals  {
+	{waves::uvmt_cv32e40p_tb.dut_wrap.cv32e40p_tb_wrapper_i.rvfi_instr_if_0_i.rvfi_rd1_wdata[31:0]}
+	} ]
+set id [waveform add -signals  {
+	{waves::uvmt_cv32e40p_tb.dut_wrap.cv32e40p_tb_wrapper_i.rvfi_instr_if_0_i.rvfi_rd2_addr[4:0]}
+	} ]
+set id [waveform add -signals  {
+	{waves::uvmt_cv32e40p_tb.dut_wrap.cv32e40p_tb_wrapper_i.rvfi_instr_if_0_i.rvfi_rd2_wdata[31:0]}
+	} ]
+set id [waveform add -signals  {
+	{waves::uvmt_cv32e40p_tb.dut_wrap.cv32e40p_tb_wrapper_i.rvfi_instr_if_0_i.rvfi_rs1_addr[4:0]}
+	} ]
+set id [waveform add -signals  {
+	{waves::uvmt_cv32e40p_tb.dut_wrap.cv32e40p_tb_wrapper_i.rvfi_instr_if_0_i.rvfi_rs1_rdata[31:0]}
+	} ]
+set id [waveform add -signals  {
+	{waves::uvmt_cv32e40p_tb.dut_wrap.cv32e40p_tb_wrapper_i.rvfi_instr_if_0_i.rvfi_rs2_addr[4:0]}
+	} ]
+set id [waveform add -signals  {
+	{waves::uvmt_cv32e40p_tb.dut_wrap.cv32e40p_tb_wrapper_i.rvfi_instr_if_0_i.rvfi_rs2_rdata[31:0]}
+	} ]
+set id [waveform add -signals  {
+	{waves::uvmt_cv32e40p_tb.dut_wrap.cv32e40p_tb_wrapper_i.rvfi_instr_if_0_i.rvfi_rs3_addr[4:0]}
+	} ]
+set id [waveform add -signals  {
+	{waves::uvmt_cv32e40p_tb.dut_wrap.cv32e40p_tb_wrapper_i.rvfi_instr_if_0_i.rvfi_rs3_rdata[31:0]}
+	} ]
+set id [waveform add -signals  {
+	waves::uvmt_cv32e40p_tb.dut_wrap.cv32e40p_tb_wrapper_i.rvfi_instr_if_0_i.rvfi_trap
+	} ]
+set id [waveform add -signals  {
+	waves::uvmt_cv32e40p_tb.dut_wrap.cv32e40p_tb_wrapper_i.rvfi_instr_if_0_i.rvfi_valid
+	} ]
+
+waveform xview limits 0 85878.3ns
+
+#
+# Waveform Window Links
+#
+
+#
+# Console windows
+#
+console set -windowname Console
+window geometry Console 600x250+0+0
+
+#
+# Layout selection
+#

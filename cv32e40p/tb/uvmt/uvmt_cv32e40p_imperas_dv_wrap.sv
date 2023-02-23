@@ -66,7 +66,6 @@
         end \
     end
 
-module uvmt_cv32e40p_imperas_dv_wrap
 ////////////////////////////////////////////////////////////////////////////
 // CSR definitions
 ////////////////////////////////////////////////////////////////////////////
@@ -227,7 +226,13 @@ module uvmt_cv32e40p_imperas_dv_wrap
 `define CSR_MHARTID_ADDR        32'hF14
 `define CSR_MCONFIGPTR_ADDR     32'hF15
 
+///////////////////////////////////////////////////////////////////////////////
+// Module wrapper for Imperas DV.
+////////////////////////////////////////////////////////////////////////////
+
 `include "rvvi/imperasDV.svh" // located in $IMPERAS_HOME/ImpProprietary/include/host
+
+module uvmt_cv32e40p_imperas_dv_wrap
   import uvm_pkg::*;
   import cv32e40p_pkg::*;
   import uvme_cv32e40p_pkg::*;

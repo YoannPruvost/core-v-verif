@@ -261,7 +261,9 @@ module uvmt_cv32e40p_imperas_dv_wrap
                    )
                    trace2api(rvvi);
 
-   trace2log       trace2log(rvvi);
+   trace2log       idv_trace2log(rvvi);
+
+   trace2cov       idv_trace2cov(rvvi);
 
    string info_tag = "ImperasDV_wrap";
 
